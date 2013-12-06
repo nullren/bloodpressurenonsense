@@ -11,15 +11,13 @@
     {{loginButtons align="right"}}
   </div>
   <h1>Blood Pressure Nonsense</h1>
-  <div id="chart">
-   {{> chart}}
-  </div>
-  <div id="details">
-    {{> details}}
-  </div>
+  {{> details}}
+  {{> chart}}
+  {{> list}}
 </template>
 
-<template name="chart">
+<template name="list">
+  <div id="list">
   {{#each pressures}}
     <ul>
       {{> pressure_point}}
@@ -27,6 +25,12 @@
   {{else}}
     <p>you have input no blood pressure points yet</p>
   {{/each}}
+  </div>
+</template>
+
+<template name="chart">
+  <div id="chart">
+  </div>
 </template>
 
 <template name="pressure_point">
@@ -41,12 +45,14 @@
 </template>
 
 <template name="details">
+  <div id="details">
   {{#if currentUser}}
     <p>welcome back!</p>
     {{> input}}
   {{else}}
     <p>please log in or sign up!</p>
   {{/if}}
+  </div>
 </template>
 
 <template name="input">
