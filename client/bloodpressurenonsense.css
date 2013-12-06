@@ -1,0 +1,22 @@
+#chart, #details {
+  float: left;
+  width: 40%;
+  margin: 1em;
+  padding: 1em;
+  border: 1px solid black;
+}
+
+#login_box { float: right }
+
+#input { padding: 1em; background: #eee; }
+#input label {
+  display: block;
+  position: relative;
+  margin: .2em;
+}
+#input label input {
+}
+#input input {
+  float: right;
+  width: 3em;
+}

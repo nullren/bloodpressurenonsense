@@ -1,0 +1,64 @@
+<head>
+  <title>Blood Pressure Nonsense</title>
+</head>
+
+<body>
+  {{> page}}
+</body>
+
+<template name="page">
+  <div id="login_box">
+    {{loginButtons align="right"}}
+  </div>
+  <h1>Blood Pressure Nonsense</h1>
+  <div id="chart">
+   {{> chart}}
+  </div>
+  <div id="details">
+    {{> details}}
+  </div>
+</template>
+
+<template name="chart">
+  {{#each pressures}}
+    <ul>
+      {{> pressure_point}}
+    </ul>
+  {{else}}
+    <p>you have input no blood pressure points yet</p>
+  {{/each}}
+</template>
+
+<template name="pressure_point">
+  <li>
+    <ul>
+      <li>Diastolic: {{dia}}</li>
+      <li>Sysstolic: {{sys}}</li>
+      <li>Pulse: {{pulse}}</li>
+      <li>Date: {{date}}</li>
+    </ul>
+  </li>
+</template>
+
+<template name="details">
+  {{#if currentUser}}
+    <p>welcome back!</p>
+    {{> input}}
+  {{else}}
+    <p>please log in or sign up!</p>
+  {{/if}}
+</template>
+
+<template name="input">
+  <div id="input">
+    <p>Add a new <em>pressure point</em></p>
+    <hr />
+    <form action="#" method="get" onsubmit="Pressures.insert({owner: Meteor.userId(), dia: this.dia.value, sys: this.sys.value, pulse: this.pulse.value, date: new Date()}); return false;">
+      <label>Diastolic: <input type="text" name="dia" /></label>
+      <label>Systolic: <input type="text" name="sys" /></label>
+      <label>Pulse: <input type="text" name="pulse" /></label>
+      <label>&nbsp;<input type="submit" value="add" /></label>
+      <hr />
+    </form>
+  </div>
+</template>
