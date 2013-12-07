@@ -12,8 +12,10 @@
   </div>
   <h1>Blood Pressure Nonsense</h1>
   {{> details}}
-  {{> chart}}
-  {{> list}}
+  {{#if currentUser}}
+    {{> chart}}
+    {{> list}}
+  {{/if}}
 </template>
 
 <template name="list">
